@@ -19,6 +19,7 @@ export default async function handler(
 
     if (existingUser) {
       return res.status(422).json({ error: "Try another email my friend" });
+      console.log(existingUser);
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);

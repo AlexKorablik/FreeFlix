@@ -12,9 +12,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const router = useRouter();
   const { openModal } = useInfoModalStore();
 
+  const handlePlayButtonClick = () => {
+    router.push(`/watch/${data?.id}`);
+  };
+
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
       <img
+        onTouchEnd={handlePlayButtonClick}
         src={data.thumbnailUrl}
         alt=" Movie Thumbnail"
         className="
@@ -51,6 +56,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         "
       >
         <img
+          onTouchEnd={handlePlayButtonClick}
           src={data.thumbnailUrl}
           alt=" Movie Thumbnail"
           className="
@@ -80,7 +86,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           <div className="flex flex-row items-center gap-3">
             <div
               className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300"
-              onClick={() => router.push(`/watch/${data?.id}`)}
+              onTouchEnd={handlePlayButtonClick}
+              onClick={handlePlayButtonClick}
             >
               <BsFillPlayFill className="text-black w-4 lg:w-6" />
             </div>
